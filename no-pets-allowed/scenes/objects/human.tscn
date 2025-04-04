@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://bvg3legqgm8bj"]
+[gd_scene load_steps=3 format=3 uid="uid://bvg3legqgm8bj"]
+
+[ext_resource type="Texture2D" uid="uid://baoyrb26d1xiq" path="res://assets/visual/temp/stickperson.png" id="1_xaixr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ii3tp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xaixr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Human" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ii3tp")
