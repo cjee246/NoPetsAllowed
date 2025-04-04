@@ -11,9 +11,8 @@ var state: GameStates = GameStates.TITLE
 # score variables
 var level: int = 0
 var lives: int = 5
-var target: int = 5
-var dogs: int = 0
-var people: int = 0
+var pets: int = 0
+var humans: int = 0
 var score: int = 0
 
 func _ready() -> void:
