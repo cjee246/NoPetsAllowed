@@ -15,6 +15,9 @@ var pets: int = 0
 var humans: int = 0
 var score: int = 0
 
+# global variables
+var timer_wait_time: float = 0.0
+
 func _ready() -> void:
 	pass # Replace with function body.
 

@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciw8kicv5qio"]
+[gd_scene load_steps=4 format=3 uid="uid://ciw8kicv5qio"]
 
 [ext_resource type="PackedScene" uid="uid://bs1scwi8yq7di" path="res://scenes/objects/door.tscn" id="1_2qwqm"]
 [ext_resource type="Script" path="res://scenes/main/main_game.gd" id="1_413jr"]
-[ext_resource type="PackedScene" uid="uid://bvg3legqgm8bj" path="res://scenes/objects/human.tscn" id="2_h36c7"]
-[ext_resource type="PackedScene" uid="uid://nlg5bgtq6brj" path="res://scenes/objects/pet.tscn" id="3_0cv78"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nsq8g"]
 
@@ -17,18 +15,13 @@ offset_left = -621.0
 offset_top = -367.0
 offset_right = 618.0
 offset_bottom = 363.0
+mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("CanvasItemMaterial_nsq8g")
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [node name="Door" parent="." instance=ExtResource("1_2qwqm")]
-
-[node name="Human" parent="." instance=ExtResource("2_h36c7")]
-visible = false
-position = Vector2(66, 12)
-
-[node name="Pet" parent="." instance=ExtResource("3_0cv78")]
-visible = false
-position = Vector2(72, 78)

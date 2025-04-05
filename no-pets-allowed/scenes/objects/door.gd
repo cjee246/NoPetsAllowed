@@ -1,11 +1,11 @@
 extends Node2D
 
 @onready var timer: Timer = $Timer
-
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 # variable for type
 enum Type {HUMAN, PET, NONE} 
-var pet_scene: PackedScene = load("res://scenes/objects/pet.tscn")
-var human_scene: PackedScene = load( "res://scenes/objects/human.tscn")
+var pet_scene: PackedScene = preload("res://scenes/objects/pet.tscn")
+var human_scene: PackedScene = preload( "res://scenes/objects/human.tscn")
 
 # get current level settings -- move to game script
 var level: int = Main.level
@@ -22,6 +22,7 @@ var is_pet: bool = false
 
 func set_door():
 	timer.wait_time = 3
+	Main.timer_wait_time = timer.wait_time
 	timer.start()
 	
 func randomize_door():
@@ -33,6 +34,7 @@ func open_door() -> bool:
 		return false
 	else:
 		# animate door open
+		animation.play("opening")
 		set_door()
 		randomize_door()
 		is_open = true
@@ -40,9 +42,13 @@ func open_door() -> bool:
 		return true
 
 func close_door():
-	if is_human:
+	if !is_open:
+		return
+	elif is_human:
+		# play grumbling
 		pass
 	elif is_pet:
+		# play whining
 		pass
 	else:
 		pass
@@ -51,7 +57,10 @@ func close_door():
 func reset_door():
 	is_open = false
 	# animate door close
+	animation.play("closing")
 	# destroy any spawned objects
+	for object in $Objects/Waiting.get_children():
+		object.queue_free()
 	human_queue = 0
 	pet_queue = 0
 	timer.stop()
@@ -63,23 +72,21 @@ func _on_timer_timeout() -> void:
 func process_entry():
 	if is_human:
 		humans += 1
-		# animate human entry and dequeue
 	elif is_pet:
 		pets += 1
-		# animate pet entry and dequeue
+	for object in $Objects/Waiting.get_children():
+		object.reparent($Objects/Exiting)
 		
 func process_spawn():
 	if human_queue > 0:
 		is_human = true
 		is_pet = false
 		human_queue -= 1
-		# spawn a human in the doorway
 		spawn_object(human_scene)
 	elif pet_queue > 0:
 		is_human = false
 		is_pet = true
 		pet_queue -= 1
-		# spawn a pet in the doorway	
 		spawn_object(pet_scene)
 	else:
 		is_human = false
@@ -87,5 +94,11 @@ func process_spawn():
 		
 func spawn_object(object_scene: PackedScene):
 	var object = object_scene.instantiate()
-	$Objects.add_child(object)
-	
+	object.position = position + Vector2(70, 0)
+	$Objects/Waiting.add_child(object)
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				close_door()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs1scwi8yq7di"]
+[gd_scene load_steps=8 format=3 uid="uid://bs1scwi8yq7di"]
 
 [ext_resource type="Script" path="res://scenes/objects/door.gd" id="1_1mxlq"]
 [ext_resource type="Texture2D" uid="uid://caf0synom7r0y" path="res://assets/visual/temp/doors.jpg" id="1_j1tmq"]
@@ -35,9 +35,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iyt8p")
 }],
-"loop": true,
+"loop": false,
 "name": &"closing",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,22 +57,35 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bvl87")
 }],
-"loop": true,
+"loop": false,
 "name": &"opening",
-"speed": 5.0
+"speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g3c"]
+size = Vector2(351, 378)
+
 [node name="Door" type="Node2D"]
+z_index = 5
 script = ExtResource("1_1mxlq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2yfih")
-animation = &"closing"
-frame = 2
-frame_progress = 0.556754
+animation = &"closed"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.5, -4)
+shape = SubResource("RectangleShape2D_m2g3c")
+
 [node name="Objects" type="Node2D" parent="."]
 
+[node name="Waiting" type="Node2D" parent="Objects"]
+
+[node name="Exiting" type="Node2D" parent="Objects"]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
