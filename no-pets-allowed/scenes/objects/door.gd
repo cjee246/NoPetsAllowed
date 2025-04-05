@@ -26,7 +26,8 @@ var is_pet: bool = false
 var width: int = 0
 
 func _ready() -> void:
-	width = $ReferenceRect.size.x
+	apply_scale(Vector2(Main.scale, Main.scale))
+	width = $ReferenceRect.size.x * Main.scale
 	
 func set_door():
 	timer.wait_time = Main.door_time
@@ -100,9 +101,6 @@ func process_spawn():
 func spawn_object(object_scene: PackedScene):
 	var object = object_scene.instantiate()
 	object.position = Vector2(120, 20)
-	print("global: " + str(global_position))
-	print("local: " + str(position))
-	print("object: " + str(object.position))
 	$Objects/Waiting.add_child(object)
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

@@ -53,6 +53,15 @@ func _on_level_timer_timeout() -> void:
 	level_up()
 	level_end.activate_display()
 
+func clear_doors():
+	for door in $TestDoor.get_children():
+		door.close_door()
+		door.queue_free()
+		
+	for door in $Doors.get_children():
+		door.close_door()
+		door.queue_free()
+		
 func level_up():
 	level_end.set_state_level_up()
 	level_end.humans_this = humans
@@ -82,17 +91,22 @@ func center_doors():
 	var door_width = $Doors.get_child(0).width
 	var total_width = $Doors.get_child_count() * door_width
 	var view_width = $WhiteBg.size.x
-	var offset = (view_width - total_width) / 2 
-	for door in $Doors.get_children():
-		door.position.y = 150
-		door.position.x = offset
-		offset += door_width
-
-func clear_doors():
-	for door in $TestDoor.get_children():
-		door.close_door()
-		door.queue_free()
-		
-	for door in $Doors.get_children():
-		door.close_door()
-		door.queue_free()
+	
+	if !Main.split:
+		var offset = (view_width - total_width) / 2 
+		for door in $Doors.get_children():
+			door.position.y = 150
+			door.position.x = offset
+			offset += door_width
+	
+	else:
+		var offset = (view_width - total_width / 2) / 2 
+		var pos_y = 120
+		for idx in range (0, $Doors.get_child_count()):
+			var door = $Doors.get_child(idx)
+			if idx == $Doors.get_child_count() / 2:
+				pos_y = 400
+				offset = (view_width - total_width / 2) / 2 
+			door.position.y = pos_y
+			door.position.x = offset
+			offset += door_width
