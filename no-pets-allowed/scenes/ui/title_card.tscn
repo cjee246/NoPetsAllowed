@@ -1,18 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxgoxuadiaobw"]
+[gd_scene load_steps=2 format=3 uid="uid://ccnn0y04y4j0c"]
 
-[ext_resource type="Script" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
+[ext_resource type="Script" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
 
-[node name="LevelEnd" type="Control"]
-z_index = 1
+[node name="TitleCard" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mhwnh")
+script = ExtResource("1_vstvh")
 
 [node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -37,7 +37,6 @@ border_width = 13.0
 editor_only = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 140.0
 offset_top = 110.0
 offset_right = 1140.0
@@ -50,64 +49,69 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Level Complete!"
 
 [node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Level Complete!"
+text = "NO PETS ALLOWED!"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 70
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "Humans Entered:"
+text = "By Calvin Jee"
 
 [node name="HumansLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-text = "Lives Remaining:"
-
-[node name="LivesLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-text = "0"
+text = "By Calvin Jee"
+uri = "https://cjee246.itch.io/"
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 80
 
-[node name="NextButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="TutorialButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-disabled = true
-text = "Next Level"
+text = "Tutorial"
 
-[node name="AddMoreLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
-visible = false
-modulate = Color(0, 0, 0, 1)
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-text = "Description of next level:
-Add more doors
-Add more guests"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[node name="SkipButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skip to Level 5"
+
+[node name="HSeparator5" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

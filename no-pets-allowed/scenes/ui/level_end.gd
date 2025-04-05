@@ -7,6 +7,7 @@ extends Control
 @onready var next_button: Button = $HBoxContainer/VBoxContainer/NextButton
 @onready var desc_label: Label = $HBoxContainer/VBoxContainer/AddMoreLabel
 
+@onready var title_scene = load("res://scenes/main/title_screen.tscn")
 
 # Script specific variables
 enum GameState {LEVEL_COMPLETE, GAME_OVER}
@@ -41,7 +42,7 @@ func setup_ui():
 	else:
 		state = GameState.GAME_OVER
 		title_label.text = "Game Over :("
-		next_button.text = "Restart"
+		next_button.text = "Return to Title"
 		
 func setup_description():
 	if state == GameState.GAME_OVER:
@@ -58,5 +59,6 @@ func set_state_level_up():
 	
 func _on_next_button_pressed() -> void:
 	if state == GameState.GAME_OVER:
-		Main.reset_game()
-	get_tree().reload_current_scene()
+		get_tree().change_scene_to_packed(title_scene)
+	else:
+		get_tree().reload_current_scene()
