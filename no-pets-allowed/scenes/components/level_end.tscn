@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bxgoxuadiaobw"]
+
+[node name="LevelEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 2
+offset_left = 340.0
+offset_top = 110.0
+offset_right = 940.0
+offset_bottom = 610.0
+mouse_filter = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Control"]
+layout_mode = 2
+offset_left = 340.0
+offset_top = 110.0
+offset_right = 940.0
+offset_bottom = 610.0
+mouse_filter = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 13.0
+editor_only = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 110.0
+offset_right = 1140.0
+offset_bottom = 610.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Complete!"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Complete!"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Total humans:"
+
+[node name="HumansLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "___"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Lives Remaining:"
+
+[node name="LivesLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "___"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="NextButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="AddMoreLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Description of next level:
+Add more doors
+Add more guests"
+horizontal_alignment = 1
