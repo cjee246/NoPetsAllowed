@@ -78,6 +78,7 @@ animation = &"closed"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(8.5, -4)
 shape = SubResource("RectangleShape2D_m2g3c")
 
