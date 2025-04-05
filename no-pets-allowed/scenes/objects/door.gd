@@ -25,7 +25,7 @@ var is_human: bool = false
 var is_pet: bool = false
 
 func set_door():
-	timer.wait_time = 3
+	timer.wait_time = 1
 	Main.timer_wait_time = timer.wait_time
 	timer.start()
 	
@@ -37,7 +37,6 @@ func open_door() -> bool:
 	if is_open:
 		return false
 	else:
-		# animate door open
 		animation.play("opening")
 		set_door()
 		randomize_door()
@@ -62,9 +61,7 @@ func reset_door():
 	is_open = false
 	is_human = false
 	is_pet = false
-	# animate door close
 	animation.play("closing")
-	# destroy any spawned objects
 	for object in $Objects/Waiting.get_children():
 		object.queue_free()
 	human_queue = 0
@@ -95,12 +92,11 @@ func process_spawn():
 		pet_queue -= 1
 		spawn_object(pet_scene)
 	else:
-		is_human = false
-		is_pet = false
+		close_door()
 		
 func spawn_object(object_scene: PackedScene):
 	var object = object_scene.instantiate()
-	object.position = position + Vector2(70, 0)
+	object.position = Vector2(0,0) + Vector2(70, 0)
 	$Objects/Waiting.add_child(object)
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

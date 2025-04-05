@@ -21,23 +21,27 @@ mouse_filter = 2
 [node name="UserInterface" parent="." instance=ExtResource("2_1k3s6")]
 metadata/_edit_use_anchors_ = true
 
-[node name="Door" parent="." instance=ExtResource("1_2qwqm")]
-position = Vector2(640, 360)
-
-[node name="LevelTimer" type="Timer" parent="."]
-wait_time = 30.0
-one_shot = true
-autostart = true
-
-[node name="DoorTimer" type="Timer" parent="."]
-
 [node name="LevelEnd" parent="." instance=ExtResource("4_pnaw2")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="human_entered" from="Door" to="." method="_on_door_human_entered"]
-[connection signal="pet_entered" from="Door" to="." method="_on_door_pet_entered"]
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="DoorTimer" type="Timer" parent="."]
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("1_2qwqm")]
+position = Vector2(640, 360)
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
 [connection signal="timeout" from="DoorTimer" to="." method="_on_door_timer_timeout"]
+[connection signal="human_entered" from="Doors/Door" to="." method="_on_door_human_entered"]
+[connection signal="pet_entered" from="Doors/Door" to="." method="_on_door_pet_entered"]

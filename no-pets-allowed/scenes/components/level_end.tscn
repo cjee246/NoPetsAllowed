@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://bxgoxuadiaobw"]
+[gd_scene load_steps=2 format=3 uid="uid://bxgoxuadiaobw"]
+
+[ext_resource type="Script" path="res://scenes/components/level_end.gd" id="1_mhwnh"]
 
 [node name="LevelEnd" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mhwnh")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -49,11 +53,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Level Complete!"
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Level Complete!"
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,7 +75,7 @@ text = "Total humans:"
 [node name="HumansLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "___"
+text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -83,7 +88,7 @@ text = "Lives Remaining:"
 [node name="LivesLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "___"
+text = "0"
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -91,12 +96,16 @@ theme_override_constants/separation = 100
 
 [node name="NextButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Next Level"
 
 [node name="AddMoreLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "Description of next level:
 Add more doors
 Add more guests"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
