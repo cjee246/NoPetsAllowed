@@ -35,7 +35,7 @@ func display_score():
 func setup_ui():
 	if Main.lives > 0:
 		state = GameState.LEVEL_COMPLETE
-		title_label.text = "Level " + str(Main.level) + " Complete!"
+		title_label.text = "Level Complete!"
 		next_button.text = "Next Level"
 	else:
 		state = GameState.GAME_OVER
@@ -46,9 +46,7 @@ func setup_description():
 	if state == GameState.GAME_OVER:
 		desc_label.text = "Too many happy pets.\nShare your level and score!"
 	else:
-		# depending on level, add more doors or add more speed
-		desc_label.text = "Add more doors!"
-		#desc_label.text = "Add more speed!"
+		desc_label.text = Main.get_level_desc()
 		pass
 
 func set_state_game_over():
@@ -60,7 +58,4 @@ func set_state_level_up():
 func _on_next_button_pressed() -> void:
 	if state == GameState.GAME_OVER:
 		Main.reset_game()
-	else:
-		Main.level += 1
-		pass
 	get_tree().reload_current_scene()

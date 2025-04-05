@@ -4,7 +4,7 @@ extends Node2D
 @onready var ui: Control = $UserInterface
 @onready var level_end: Control = $LevelEnd
 @onready var level_timer: Timer = $LevelTimer
-@onready var door_timer: Timer = $DoorTimer
+@onready var spawn_timer: Timer = $SpawnTimer
 
 # level-based variables
 var humans: int = 0
@@ -14,7 +14,11 @@ func _ready() -> void:
 	ui.set_level_label(Main.level)
 	level_end.lives_prev = Main.lives
 	level_end.humans_prev = Main.humans
-	door_timer.start()
+	
+	Main.set_level()
+	level_timer.wait_time = Main.level_time
+	level_timer.start()
+	spawn_timer.start()
 
 func _process(delta: float) -> void:
 	ui.set_timer_label(level_timer.get_time_left())
@@ -37,7 +41,7 @@ func _on_door_timer_timeout() -> void:
 		$Doors/Door.open_door()
 
 func _on_level_timer_timeout() -> void:
-	door_timer.stop()
+	spawn_timer.stop()
 	for door in $Doors.get_children():
 		door.close_door()
 		door.queue_free()
@@ -49,6 +53,7 @@ func level_up():
 	level_end.humans_this = humans
 	level_end.pets_this = pets
 	Main.humans += humans
+	Main.level += 1
 	
 func game_over():
 	level_end.set_state_game_over()
@@ -56,7 +61,7 @@ func game_over():
 	level_end.pets_this = pets
 	Main.humans += humans
 	level_timer.stop()
-	door_timer.stop()
+	spawn_timer.stop()
 	for door in $Doors.get_children():
 		door.close_door()
 		door.queue_free()

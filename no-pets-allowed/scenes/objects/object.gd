@@ -7,7 +7,7 @@ func _ready() -> void:
 	modulate.a = 0
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property(self, 'modulate:a', 1.0, 0.8)
-	timer.wait_time = Main.timer_wait_time
+	timer.wait_time = Main.door_time
 	timer.start()
 
 func _on_timer_timeout() -> void:

@@ -32,16 +32,17 @@ grow_vertical = 1
 [node name="LevelTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
-autostart = true
 
-[node name="DoorTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("1_2qwqm")]
 position = Vector2(640, 360)
 
+[node name="Doors2" type="Node2D" parent="."]
+
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
-[connection signal="timeout" from="DoorTimer" to="." method="_on_door_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_door_timer_timeout"]
 [connection signal="human_entered" from="Doors/Door" to="." method="_on_door_human_entered"]
 [connection signal="pet_entered" from="Doors/Door" to="." method="_on_door_pet_entered"]

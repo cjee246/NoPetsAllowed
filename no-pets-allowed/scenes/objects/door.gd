@@ -25,8 +25,7 @@ var is_human: bool = false
 var is_pet: bool = false
 
 func set_door():
-	timer.wait_time = 1
-	Main.timer_wait_time = timer.wait_time
+	timer.wait_time = Main.door_time
 	timer.start()
 	
 func randomize_door():
