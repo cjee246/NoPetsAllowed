@@ -14,8 +14,8 @@ const DOORS_MIN = 1
 const DOORS_MAX = 10
 const LEVEL_TIME_BASE = 10
 const LEVEL_TIME_INC = 2
-const LEVEL_TIME_MAX = 60
-const DOOR_TIME_BASE = 2
+const LEVEL_TIME_MAX = 40
+const DOOR_TIME_BASE = 2.5
 const DOOR_TIME_DEC = 0.3
 const DOORS_NEW_FLOOR = 4
 
@@ -31,14 +31,19 @@ var time_scale_level: int = 0
 # global variables
 var door_time: float = 0.0
 var level_time: float = 0.0
+var tutorial_active: bool = false
 
 func _ready() -> void:
 	time_scale_level = DOORS_MAX / 2
 	
-func reset_game():
+func reset_game(set_level: int = 0):
 	lives = LIVES
 	humans = 0
-	level = 1
+	level = set_level
+	if level == 0:
+		tutorial_active = true
+	else:
+		tutorial_active = false
 
 func set_level():
 	level_time = LEVEL_TIME_BASE + level * LEVEL_TIME_INC

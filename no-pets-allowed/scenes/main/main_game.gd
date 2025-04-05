@@ -2,6 +2,7 @@ extends Node2D
 
 # linked variables
 @onready var ui: Control = $UserInterface
+@onready var tutorial: Control = $Tutorial
 @onready var level_end: Control = $LevelEnd
 @onready var level_timer: Timer = $LevelTimer
 @onready var spawn_timer: Timer = $SpawnTimer
@@ -38,26 +39,28 @@ func _on_door_pet_entered() -> void:
 	if Main.lives == 0:
 		game_over()
 	ui.set_pets_label(pets)
+	
+func _on_door_pet_spawned() -> void:
+	if Main.tutorial_active:
+		tutorial.show_pets_label()
+			
+func _on_door_human_spawned() -> void:
+	if Main.tutorial_active:
+		tutorial.show_humans_label()
 
 func _on_door_timer_timeout() -> void:
-	#var door = randi_range(0, 1)
-	#if door == 1:
-		#$TestDoor/Door.open_door()
-	
 	var idx = randi_range(0, $Doors.get_child_count() - 1)
-	$Doors.get_child(idx).open_door()
+	$Doors.get_child(idx).open_door(Main.tutorial_active)
+	
 
 func _on_level_timer_timeout() -> void:
 	spawn_timer.stop()
 	clear_doors()
 	level_up()
 	level_end.activate_display()
+	tutorial.hide()
 
-func clear_doors():
-	for door in $TestDoor.get_children():
-		door.close_door()
-		door.queue_free()
-		
+func clear_doors():		
 	for door in $Doors.get_children():
 		door.close_door()
 		door.queue_free()
@@ -68,6 +71,7 @@ func level_up():
 	level_end.pets_this = pets
 	Main.humans += humans
 	Main.level += 1
+	Main.tutorial_active = false
 	
 func game_over():
 	level_end.set_state_game_over()
@@ -85,6 +89,9 @@ func set_doors():
 		$Doors.add_child(door)
 		door.human_entered.connect(_on_door_human_entered)
 		door.pet_entered.connect(_on_door_pet_entered)
+		if Main.tutorial_active:
+			door.pet_spawned.connect(_on_door_pet_spawned)
+			door.human_spawned.connect(_on_door_human_spawned)
 	center_doors()
 
 func center_doors():

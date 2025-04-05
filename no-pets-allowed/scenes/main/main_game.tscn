@@ -1,14 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciw8kicv5qio"]
 
-[ext_resource type="PackedScene" uid="uid://bs1scwi8yq7di" path="res://scenes/objects/door.tscn" id="1_2qwqm"]
 [ext_resource type="Script" path="res://scenes/main/main_game.gd" id="1_413jr"]
 [ext_resource type="PackedScene" uid="uid://cudk5len203pr" path="res://scenes/ui/user_interface.tscn" id="2_1k3s6"]
+[ext_resource type="PackedScene" uid="uid://cx4cww6s8ebwt" path="res://scenes/ui/tutorial.tscn" id="4_krqjs"]
 [ext_resource type="PackedScene" uid="uid://bxgoxuadiaobw" path="res://scenes/ui/level_end.tscn" id="4_pnaw2"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_413jr")
-
-[node name="GameManager" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
@@ -20,6 +18,8 @@ mouse_filter = 2
 
 [node name="UserInterface" parent="." instance=ExtResource("2_1k3s6")]
 metadata/_edit_use_anchors_ = true
+
+[node name="Tutorial" parent="." instance=ExtResource("4_krqjs")]
 
 [node name="LevelEnd" parent="." instance=ExtResource("4_pnaw2")]
 visible = false
@@ -35,15 +35,7 @@ one_shot = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="TestDoor" type="Node2D" parent="."]
-visible = false
-
-[node name="Door" parent="TestDoor" instance=ExtResource("1_2qwqm")]
-position = Vector2(640, 360)
-
 [node name="Doors" type="Node2D" parent="."]
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_door_timer_timeout"]
-[connection signal="human_entered" from="TestDoor/Door" to="." method="_on_door_human_entered"]
-[connection signal="pet_entered" from="TestDoor/Door" to="." method="_on_door_pet_entered"]

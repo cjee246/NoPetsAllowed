@@ -3,6 +3,8 @@ extends Node2D
 # signals
 signal human_entered
 signal pet_entered
+signal human_spawned
+signal pet_spawned
 
 # linked variables
 @onready var timer: Timer = $Timer
@@ -34,16 +36,19 @@ func set_door():
 	timer.start()
 	
 func randomize_door():
-	human_queue = randi_range(1, 3)
-	pet_queue = randi_range(1, 1)
+	human_queue = randi_range(1, 4)
+	pet_queue = randi_range(0, 3)
 
-func open_door() -> bool:
+func open_door(tutorial_active: bool = false) -> bool:
 	if is_open:
 		return false
 	else:
 		animation.play("opening")
 		set_door()
 		randomize_door()
+		if tutorial_active:
+			human_queue = 2
+			pet_queue = 1
 		is_open = true
 		_on_timer_timeout()
 		return true
@@ -89,11 +94,13 @@ func process_spawn():
 		is_human = true
 		is_pet = false
 		human_queue -= 1
+		human_spawned.emit()
 		spawn_object(human_scene)
 	elif pet_queue > 0:
 		is_human = false
 		is_pet = true
-		pet_queue -= 1
+		pet_queue = 0
+		pet_spawned.emit()
 		spawn_object(pet_scene)
 	else:
 		close_door()
