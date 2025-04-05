@@ -9,7 +9,7 @@ enum GameStates {TITLE, TUTORIAL, MAIN, LEVEL_END, GAME_OVER}
 var state: GameStates = GameStates.TITLE
 
 # define constants
-const LIVES = 3
+const LIVES = 5
 const DOORS_MIN = 1
 const DOORS_MAX = 10
 const LEVEL_TIME_BASE = 10
@@ -20,7 +20,7 @@ const DOOR_TIME_DEC = 0.3
 const DOORS_NEW_FLOOR = 4
 
 # score variables
-var level: int = 2
+var level: int = 0
 var lives: int = LIVES
 var humans: int = 0
 var doors: int = 0
@@ -48,6 +48,7 @@ func set_level():
 	doors = level * 2
 	if doors < DOORS_MIN:
 		doors = DOORS_MIN
+		door_time = DOOR_TIME_BASE
 	elif doors <= DOORS_MAX:
 		door_time = DOOR_TIME_BASE
 	elif doors > DOORS_MAX:

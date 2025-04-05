@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bs1scwi8yq7di" path="res://scenes/objects/door.tscn" id="1_2qwqm"]
 [ext_resource type="Script" path="res://scenes/main/main_game.gd" id="1_413jr"]
-[ext_resource type="PackedScene" uid="uid://cudk5len203pr" path="res://scenes/components/user_interface.tscn" id="2_1k3s6"]
-[ext_resource type="PackedScene" uid="uid://bxgoxuadiaobw" path="res://scenes/components/level_end.tscn" id="4_pnaw2"]
+[ext_resource type="PackedScene" uid="uid://cudk5len203pr" path="res://scenes/ui/user_interface.tscn" id="2_1k3s6"]
+[ext_resource type="PackedScene" uid="uid://bxgoxuadiaobw" path="res://scenes/ui/level_end.tscn" id="4_pnaw2"]
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_413jr")
