@@ -28,7 +28,7 @@ offset_bottom = -360.0
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
