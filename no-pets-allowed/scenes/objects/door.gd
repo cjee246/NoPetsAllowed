@@ -60,6 +60,8 @@ func close_door():
 			
 func reset_door():
 	is_open = false
+	is_human = false
+	is_pet = false
 	# animate door close
 	animation.play("closing")
 	# destroy any spawned objects

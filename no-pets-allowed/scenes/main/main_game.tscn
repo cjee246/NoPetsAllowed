@@ -32,5 +32,8 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 
+[node name="DoorTimer" type="Timer" parent="."]
+
 [connection signal="human_entered" from="Door" to="." method="_on_door_human_entered"]
 [connection signal="pet_entered" from="Door" to="." method="_on_door_pet_entered"]
+[connection signal="timeout" from="DoorTimer" to="." method="_on_door_timer_timeout"]
