@@ -1,7 +1,13 @@
 extends Node2D
 
+# signals
+signal human_entered
+signal pet_entered
+
+# linked variables
 @onready var timer: Timer = $Timer
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+
 # variable for type
 enum Type {HUMAN, PET, NONE} 
 var pet_scene: PackedScene = preload("res://scenes/objects/pet.tscn")
@@ -10,8 +16,6 @@ var human_scene: PackedScene = preload( "res://scenes/objects/human.tscn")
 # get current level settings -- move to game script
 var level: int = Main.level
 var lives: int = Main.lives
-var humans: int = 0
-var pets: int = 0
 
 # define door variables
 var human_queue: int = 0
@@ -71,9 +75,9 @@ func _on_timer_timeout() -> void:
 		
 func process_entry():
 	if is_human:
-		humans += 1
+		human_entered.emit()
 	elif is_pet:
-		pets += 1
+		pet_entered.emit()
 	for object in $Objects/Waiting.get_children():
 		object.reparent($Objects/Exiting)
 		
