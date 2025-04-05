@@ -18,6 +18,7 @@ animations = [{
 script = ExtResource("1_dxfui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(142, 190)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_38dsw")
 

@@ -6,6 +6,9 @@ extends Node2D
 @onready var level_timer: Timer = $LevelTimer
 @onready var spawn_timer: Timer = $SpawnTimer
 
+# scenes
+var door_scene: PackedScene = preload("res://scenes/objects/door.tscn")
+
 # level-based variables
 var humans: int = 0
 var pets: int = 0
@@ -16,6 +19,7 @@ func _ready() -> void:
 	level_end.humans_prev = Main.humans
 	
 	Main.set_level()
+	set_doors()
 	level_timer.wait_time = Main.level_time
 	level_timer.start()
 	spawn_timer.start()
@@ -36,15 +40,16 @@ func _on_door_pet_entered() -> void:
 	ui.set_pets_label(pets)
 
 func _on_door_timer_timeout() -> void:
-	var door = randi_range(0, 1)
-	if door == 1:
-		$Doors/Door.open_door()
+	#var door = randi_range(0, 1)
+	#if door == 1:
+		#$TestDoor/Door.open_door()
+	
+	var idx = randi_range(0, $Doors.get_child_count() - 1)
+	$Doors.get_child(idx).open_door()
 
 func _on_level_timer_timeout() -> void:
 	spawn_timer.stop()
-	for door in $Doors.get_children():
-		door.close_door()
-		door.queue_free()
+	clear_doors()
 	level_up()
 	level_end.activate_display()
 
@@ -62,7 +67,32 @@ func game_over():
 	Main.humans += humans
 	level_timer.stop()
 	spawn_timer.stop()
+	clear_doors()
+	level_end.activate_display()
+	
+func set_doors():
+	for i in range (0, Main.doors):
+		var door = door_scene.instantiate()
+		$Doors.add_child(door)
+		door.human_entered.connect(_on_door_human_entered)
+		door.pet_entered.connect(_on_door_pet_entered)
+	center_doors()
+
+func center_doors():
+	var door_width = $Doors.get_child(0).width
+	var total_width = $Doors.get_child_count() * door_width
+	var view_width = $WhiteBg.size.x
+	var offset = (view_width - total_width) / 2 
+	for door in $Doors.get_children():
+		door.position.y = 150
+		door.position.x = offset
+		offset += door_width
+
+func clear_doors():
+	for door in $TestDoor.get_children():
+		door.close_door()
+		door.queue_free()
+		
 	for door in $Doors.get_children():
 		door.close_door()
 		door.queue_free()
-	level_end.activate_display()

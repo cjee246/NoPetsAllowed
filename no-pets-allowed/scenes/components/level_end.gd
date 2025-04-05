@@ -7,6 +7,7 @@ extends Control
 @onready var next_button: Button = $HBoxContainer/VBoxContainer/NextButton
 @onready var desc_label: Label = $HBoxContainer/VBoxContainer/AddMoreLabel
 
+
 # Script specific variables
 enum GameState {LEVEL_COMPLETE, GAME_OVER}
 var state: GameState
@@ -44,7 +45,7 @@ func setup_ui():
 		
 func setup_description():
 	if state == GameState.GAME_OVER:
-		desc_label.text = "Too many happy pets.\nShare your level and score!"
+		desc_label.text = "Too many pets allowed.\nShare your level and score!"
 	else:
 		desc_label.text = Main.get_level_desc()
 		pass
