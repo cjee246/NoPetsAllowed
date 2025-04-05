@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(self, 'global_position', position + Vector2(-500, 0), 2.0)
+	tween.tween_property(self, 'position', position + Vector2(-500, 0), 2.0)
 	tween.tween_property(self, 'modulate:a', 0, 1.0)
 	await tween.finished
 	queue_free()
