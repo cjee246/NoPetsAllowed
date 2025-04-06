@@ -7,6 +7,8 @@ extends Control
 @onready var next_button: Button = $HBoxContainer/VBoxContainer/NextButton
 @onready var desc_label: Label = $HBoxContainer/VBoxContainer/AddMoreLabel
 @onready var sfx_squeaker: AudioStreamPlayer2D = $SFX/Squeaker
+@onready var sfx_bark: AudioStreamPlayer2D = $SFX/Bark
+@onready var sprite_pet: Sprite2D = $PetSprite
 
 @onready var title_scene = load("res://scenes/main/title_screen.tscn")
 
@@ -20,6 +22,8 @@ var humans_this: int
 
 func activate_display():
 	sfx_squeaker.play()
+	if state == GameState.GAME_OVER:
+		sfx_bark.play()
 	visible = true
 	setup_ui()
 	setup_description()
@@ -49,8 +53,10 @@ func setup_ui():
 func setup_description():
 	if state == GameState.GAME_OVER:
 		desc_label.text = "Too many pets allowed.\nShare your level and score!"
+		sprite_pet.show()
 	else:
 		desc_label.text = Main.get_level_desc()
+		sprite_pet.hide()
 		pass
 
 func set_state_game_over():

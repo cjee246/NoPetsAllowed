@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 Main="*res://scripts/main/main.gd"
+GlobalMusic="*res://scenes/main/global_music.tscn"
 
 [display]
 

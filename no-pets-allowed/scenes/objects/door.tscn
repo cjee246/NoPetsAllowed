@@ -119,12 +119,12 @@ shape = SubResource("RectangleShape2D_m2g3c")
 
 [node name="Bark" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_2x3ap")
-volume_db = -7.963
+volume_db = -6.5
 bus = &"SFX"
 
 [node name="Whine" type="AudioStreamPlayer2D" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_knw5c")
-volume_db = 5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="SFX"]

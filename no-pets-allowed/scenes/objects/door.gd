@@ -91,8 +91,8 @@ func process_entry():
 	if is_human:
 		human_entered.emit()
 	elif is_pet:
-		pet_entered.emit()
 		sfx_bark.play()
+		pet_entered.emit()
 	for object in $Objects/Waiting.get_children():
 		object.reparent($Objects/Exiting)
 		

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var main_scene = load("res://scenes/main/main_game.tscn")
-
+	
 func _on_tutorial_button_pressed() -> void:
 	hide()
 	Main.reset_game()
