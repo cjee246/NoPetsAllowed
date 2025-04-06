@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dckyoubr15glp"
+path="res://.godot/imported/squeaker-003.mp3-cda08d8e78ff61172885d1ebd78c181b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/level stingers/squeaker-003.mp3"
+dest_files=["res://.godot/imported/squeaker-003.mp3-cda08d8e78ff61172885d1ebd78c181b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

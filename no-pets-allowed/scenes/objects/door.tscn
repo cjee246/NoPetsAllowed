@@ -1,9 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs1scwi8yq7di"]
+[gd_scene load_steps=25 format=3 uid="uid://bs1scwi8yq7di"]
 
 [ext_resource type="Script" uid="uid://d1rcei51jqt88" path="res://scenes/objects/door.gd" id="1_1mxlq"]
 [ext_resource type="Texture2D" uid="uid://cktkhorybqjc0" path="res://assets/visual/photoshop/door_closed.png" id="2_aji8h"]
 [ext_resource type="Texture2D" uid="uid://bhwlyw1o13pif" path="res://assets/visual/photoshop/door_open.png" id="3_w0irj"]
 [ext_resource type="Texture2D" uid="uid://vkp3ttuqpgwn" path="res://assets/visual/photoshop/door_ajar.png" id="4_vedx6"]
+[ext_resource type="AudioStream" uid="uid://bm5aktuykff3i" path="res://assets/audio/sfx/barking/barking-001.mp3" id="5_qcxdb"]
+[ext_resource type="AudioStream" uid="uid://jr4vy1ij65lp" path="res://assets/audio/sfx/barking/barking-002.mp3" id="6_el2wh"]
+[ext_resource type="AudioStream" uid="uid://dv1i5bqhij76p" path="res://assets/audio/sfx/barking/barking-003.mp3" id="7_1stkf"]
+[ext_resource type="AudioStream" uid="uid://dywdyc21tcyl8" path="res://assets/audio/sfx/barking/barking-004.mp3" id="8_5lq2g"]
+[ext_resource type="AudioStream" uid="uid://q1m6mryppjfu" path="res://assets/audio/sfx/whining/whining-001.mp3" id="9_bwxon"]
+[ext_resource type="AudioStream" uid="uid://bnjnj1dmdmgge" path="res://assets/audio/sfx/whining/whining-002.mp3" id="10_s0jfr"]
+[ext_resource type="AudioStream" uid="uid://b77fi0yt7xt5n" path="res://assets/audio/sfx/whining/whining-003.mp3" id="11_omhol"]
+[ext_resource type="AudioStream" uid="uid://cahrd4ocayira" path="res://assets/audio/sfx/whining/whining-004.mp3" id="12_nm0ra"]
+[ext_resource type="AudioStream" uid="uid://cpjyfvlra52bq" path="res://assets/audio/sfx/whining/whining-005.mp3" id="13_4rpml"]
+[ext_resource type="AudioStream" uid="uid://do2707dc5135k" path="res://assets/audio/sfx/whining/whining-006.mp3" id="14_adl0l"]
+[ext_resource type="AudioStream" uid="uid://cvj4fnngakcgy" path="res://assets/audio/sfx/doors/door_open-001.mp3" id="15_s0bcf"]
+[ext_resource type="AudioStream" uid="uid://cim4gcrw4cb27" path="res://assets/audio/sfx/doors/door_open-002.mp3" id="16_ui5vj"]
+[ext_resource type="AudioStream" uid="uid://cxddytxvmvfx2" path="res://assets/audio/sfx/doors/door_close-001.mp3" id="17_jl1r2"]
+[ext_resource type="AudioStream" uid="uid://h3cy2lfqciys" path="res://assets/audio/sfx/doors/door_close-002.mp3" id="18_2bvfx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2yfih"]
 animations = [{
@@ -47,6 +61,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g3c"]
 size = Vector2(289, 336)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2x3ap"]
+streams_count = 4
+stream_0/stream = ExtResource("5_qcxdb")
+stream_1/stream = ExtResource("6_el2wh")
+stream_2/stream = ExtResource("7_1stkf")
+stream_3/stream = ExtResource("8_5lq2g")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_knw5c"]
+streams_count = 6
+stream_0/stream = ExtResource("9_bwxon")
+stream_1/stream = ExtResource("10_s0jfr")
+stream_2/stream = ExtResource("11_omhol")
+stream_3/stream = ExtResource("12_nm0ra")
+stream_4/stream = ExtResource("13_4rpml")
+stream_5/stream = ExtResource("14_adl0l")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_piivx"]
+streams_count = 2
+stream_0/stream = ExtResource("15_s0bcf")
+stream_1/stream = ExtResource("16_ui5vj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_icj4s"]
+streams_count = 2
+stream_0/stream = ExtResource("17_jl1r2")
+stream_1/stream = ExtResource("18_2bvfx")
+
 [node name="Door" type="Node2D"]
 script = ExtResource("1_1mxlq")
 
@@ -74,6 +114,28 @@ shape = SubResource("RectangleShape2D_m2g3c")
 [node name="Waiting" type="Node2D" parent="Objects"]
 
 [node name="Exiting" type="Node2D" parent="Objects"]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Bark" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_2x3ap")
+volume_db = -7.963
+bus = &"SFX"
+
+[node name="Whine" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_knw5c")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_piivx")
+bus = &"SFX"
+
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_icj4s")
+volume_db = -4.952
+max_polyphony = 3
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

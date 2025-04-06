@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciw8kicv5qio"]
+[gd_scene load_steps=8 format=3 uid="uid://ciw8kicv5qio"]
 
 [ext_resource type="Script" uid="uid://oii3tpln84qt" path="res://scenes/main/main_game.gd" id="1_413jr"]
 [ext_resource type="PackedScene" uid="uid://cudk5len203pr" path="res://scenes/ui/user_interface.tscn" id="2_1k3s6"]
 [ext_resource type="PackedScene" uid="uid://cx4cww6s8ebwt" path="res://scenes/ui/tutorial.tscn" id="4_krqjs"]
 [ext_resource type="PackedScene" uid="uid://bxgoxuadiaobw" path="res://scenes/ui/level_end.tscn" id="4_pnaw2"]
+[ext_resource type="AudioStream" uid="uid://dukx4v58jcx4p" path="res://assets/audio/sfx/level stingers/doorbell-001.mp3" id="5_v4wsd"]
+[ext_resource type="AudioStream" uid="uid://bf0gr0ijjiobx" path="res://assets/audio/sfx/level stingers/doorbell-002.mp3" id="6_0wxsa"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uu6wu"]
+streams_count = 2
+stream_0/stream = ExtResource("5_v4wsd")
+stream_1/stream = ExtResource("6_0wxsa")
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_413jr")
@@ -36,6 +43,13 @@ one_shot = true
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="Doors" type="Node2D" parent="."]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Doorbell" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_uu6wu")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_door_timer_timeout"]

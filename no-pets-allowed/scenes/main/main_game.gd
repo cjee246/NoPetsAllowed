@@ -6,6 +6,7 @@ extends Node2D
 @onready var level_end: Control = $LevelEnd
 @onready var level_timer: Timer = $LevelTimer
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var sfx_doorbell: AudioStreamPlayer2D = $SFX/Doorbell
 
 # scenes
 var door_scene: PackedScene = preload("res://scenes/objects/door.tscn")
@@ -84,6 +85,7 @@ func game_over():
 	level_end.activate_display()
 	
 func set_doors():
+	sfx_doorbell.play()
 	for i in range (0, Main.doors):
 		var door = door_scene.instantiate()
 		$Doors.add_child(door)

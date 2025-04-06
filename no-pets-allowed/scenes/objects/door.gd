@@ -9,6 +9,10 @@ signal pet_spawned
 # linked variables
 @onready var timer: Timer = $Timer
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx_bark: AudioStreamPlayer2D = $SFX/Bark
+@onready var sfx_whine: AudioStreamPlayer2D = $SFX/Whine
+@onready var sfx_close: AudioStreamPlayer2D = $SFX/DoorClose
+@onready var sfx_open: AudioStreamPlayer2D = $SFX/DoorOpen
 
 # variable for type
 enum Type {HUMAN, PET, NONE} 
@@ -44,6 +48,7 @@ func open_door(tutorial_active: bool = false) -> bool:
 		return false
 	else:
 		animation.play("opening")
+		sfx_open.play()
 		set_door()
 		randomize_door()
 		if tutorial_active:
@@ -57,13 +62,14 @@ func close_door():
 	if !is_open:
 		return
 	elif is_human:
-		# play grumbling
+		# play grumbling?
 		pass
 	elif is_pet:
-		# play whining
+		sfx_whine.play()
 		pass
 	else:
 		pass
+	sfx_close.play()
 	reset_door()
 			
 func reset_door():
@@ -86,6 +92,7 @@ func process_entry():
 		human_entered.emit()
 	elif is_pet:
 		pet_entered.emit()
+		sfx_bark.play()
 	for object in $Objects/Waiting.get_children():
 		object.reparent($Objects/Exiting)
 		
@@ -103,6 +110,8 @@ func process_spawn():
 		pet_spawned.emit()
 		spawn_object(pet_scene)
 	else:
+		is_human = false
+		is_pet = false
 		close_door()
 		
 func spawn_object(object_scene: PackedScene):

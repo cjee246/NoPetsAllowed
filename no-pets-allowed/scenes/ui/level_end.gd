@@ -6,6 +6,7 @@ extends Control
 @onready var lives_label: Label = $HBoxContainer/VBoxContainer/HBoxContainer2/LivesLabel
 @onready var next_button: Button = $HBoxContainer/VBoxContainer/NextButton
 @onready var desc_label: Label = $HBoxContainer/VBoxContainer/AddMoreLabel
+@onready var sfx_squeaker: AudioStreamPlayer2D = $SFX/Squeaker
 
 @onready var title_scene = load("res://scenes/main/title_screen.tscn")
 
@@ -18,6 +19,7 @@ var humans_prev: int
 var humans_this: int
 
 func activate_display():
+	sfx_squeaker.play()
 	visible = true
 	setup_ui()
 	setup_description()

@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxgoxuadiaobw"]
+[gd_scene load_steps=9 format=3 uid="uid://bxgoxuadiaobw"]
 
 [ext_resource type="Script" uid="uid://lm7jq8sub128" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
+[ext_resource type="AudioStream" uid="uid://b2y6e2betaxti" path="res://assets/audio/sfx/level stingers/squeaker-001.mp3" id="2_pukg3"]
+[ext_resource type="AudioStream" uid="uid://b0qblj8n5d87x" path="res://assets/audio/sfx/level stingers/squeaker-002.mp3" id="3_c82xl"]
+[ext_resource type="AudioStream" uid="uid://dckyoubr15glp" path="res://assets/audio/sfx/level stingers/squeaker-003.mp3" id="4_mcdxo"]
+[ext_resource type="AudioStream" uid="uid://rptiimopih6f" path="res://assets/audio/sfx/level stingers/squeaker-004.mp3" id="5_j8lwu"]
+[ext_resource type="AudioStream" uid="uid://bts5pl6rxam0h" path="res://assets/audio/sfx/level stingers/squeaker-005.mp3" id="6_0o10a"]
+[ext_resource type="AudioStream" uid="uid://dicdjfch0ypiy" path="res://assets/audio/sfx/level stingers/squeaker-006.mp3" id="7_4mpj5"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ihfpr"]
+streams_count = 6
+stream_0/stream = ExtResource("2_pukg3")
+stream_1/stream = ExtResource("3_c82xl")
+stream_2/stream = ExtResource("4_mcdxo")
+stream_3/stream = ExtResource("5_j8lwu")
+stream_4/stream = ExtResource("6_0o10a")
+stream_5/stream = ExtResource("7_4mpj5")
 
 [node name="LevelEnd" type="Control"]
 z_index = 1
@@ -110,5 +125,11 @@ text = "Description of next level:
 Add more doors
 Add more guests"
 horizontal_alignment = 1
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Squeaker" type="AudioStreamPlayer2D" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_ihfpr")
+bus = &"SFX"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
