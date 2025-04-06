@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var timer: Timer = $Timer
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 func _on_timer_timeout() -> void:
 	var tween = create_tween().set_parallel(true)
+	sprite.flip_h = true
 	tween.tween_property(self, 'position', position + Vector2(-500, 0), 2.0)
 	tween.tween_property(self, 'modulate:a', 0, 1.0)
 	await tween.finished

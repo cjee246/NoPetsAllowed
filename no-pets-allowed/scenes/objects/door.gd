@@ -107,7 +107,7 @@ func process_spawn():
 		
 func spawn_object(object_scene: PackedScene):
 	var object = object_scene.instantiate()
-	object.position = Vector2(120, 20)
+	object.position = Vector2(160, 20)
 	$Objects/Waiting.add_child(object)
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

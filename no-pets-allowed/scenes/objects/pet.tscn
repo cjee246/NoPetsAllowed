@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://nlg5bgtq6brj"]
 
-[ext_resource type="Texture2D" uid="uid://cqqbfk17a8aem" path="res://assets/visual/temp/stickdog.png" id="1_af48n"]
 [ext_resource type="Script" uid="uid://bimjbknq338su" path="res://scenes/objects/object.gd" id="1_dxfui"]
+[ext_resource type="Texture2D" uid="uid://c455tou2wng2n" path="res://assets/visual/photoshop/pet.png" id="2_107uo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38dsw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_af48n")
+"texture": ExtResource("2_107uo")
 }],
 "loop": true,
 "name": &"default",
@@ -18,8 +18,8 @@ animations = [{
 script = ExtResource("1_dxfui")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(142, 190)
-scale = Vector2(0.6, 0.6)
+position = Vector2(88, 193)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_38dsw")
 
 [node name="Timer" type="Timer" parent="."]
