@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cudk5len203pr"]
+[gd_scene load_steps=3 format=3 uid="uid://cudk5len203pr"]
 
 [ext_resource type="Script" uid="uid://br7avgcumowyr" path="res://scenes/ui/user_interface.gd" id="1_d7vd3"]
+[ext_resource type="FontFile" uid="uid://dwiv1pnrb2mxa" path="res://assets/visual/fonts/Kbluckyclover-djAR.ttf" id="2_hj6hg"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -64,6 +65,7 @@ alignment = 1
 [node name="level_label" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer/VBoxContainer2"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hj6hg")
 theme_override_font_sizes/font_size = 30
 text = "Level 0"
 

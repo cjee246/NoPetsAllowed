@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccnn0y04y4j0c"]
+[gd_scene load_steps=3 format=3 uid="uid://ccnn0y04y4j0c"]
 
 [ext_resource type="Script" uid="uid://pcj4xusnse8e" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
+[ext_resource type="FontFile" uid="uid://dwiv1pnrb2mxa" path="res://assets/visual/fonts/Kbluckyclover-djAR.ttf" id="2_4cu4b"]
 
 [node name="TitleCard" type="Control"]
 layout_mode = 3
@@ -56,14 +57,15 @@ text = "Level Complete!"
 [node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "NO PETS ALLOWED!"
+theme_override_fonts/font = ExtResource("2_4cu4b")
+theme_override_font_sizes/font_size = 60
+text = "NO PETS 
+ALLOWED!"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -89,7 +91,7 @@ uri = "https://cjee246.itch.io/"
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 50
 
 [node name="TutorialButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

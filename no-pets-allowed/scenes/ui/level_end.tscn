@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxgoxuadiaobw"]
+[gd_scene load_steps=10 format=3 uid="uid://bxgoxuadiaobw"]
 
 [ext_resource type="Script" uid="uid://lm7jq8sub128" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
+[ext_resource type="FontFile" uid="uid://dwiv1pnrb2mxa" path="res://assets/visual/fonts/Kbluckyclover-djAR.ttf" id="2_c82xl"]
 [ext_resource type="AudioStream" uid="uid://b2y6e2betaxti" path="res://assets/audio/sfx/level stingers/squeaker-001.mp3" id="2_pukg3"]
 [ext_resource type="AudioStream" uid="uid://b0qblj8n5d87x" path="res://assets/audio/sfx/level stingers/squeaker-002.mp3" id="3_c82xl"]
 [ext_resource type="AudioStream" uid="uid://dckyoubr15glp" path="res://assets/audio/sfx/level stingers/squeaker-003.mp3" id="4_mcdxo"]
@@ -71,7 +72,8 @@ text = "Level Complete!"
 [node name="TitleLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_c82xl")
+theme_override_font_sizes/font_size = 52
 text = "Level Complete!"
 horizontal_alignment = 1
 
@@ -86,11 +88,13 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Humans Entered:"
 
 [node name="HumansLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
@@ -99,11 +103,13 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Lives Remaining:"
 
 [node name="LivesLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "0"
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
