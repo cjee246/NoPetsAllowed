@@ -12,8 +12,7 @@ config_version=5
 
 config/name="No Pets Allowed"
 run/main_scene="res://scenes/main/title_screen.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
@@ -28,3 +27,9 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="No Pets Allowed"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

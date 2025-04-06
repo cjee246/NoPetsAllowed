@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxgoxuadiaobw"]
 
-[ext_resource type="Script" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
+[ext_resource type="Script" uid="uid://lm7jq8sub128" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
 
 [node name="LevelEnd" type="Control"]
 z_index = 1

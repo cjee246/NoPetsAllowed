@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccnn0y04y4j0c"]
 
-[ext_resource type="Script" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
+[ext_resource type="Script" uid="uid://pcj4xusnse8e" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
 
 [node name="TitleCard" type="Control"]
 layout_mode = 3
@@ -37,6 +37,7 @@ border_width = 13.0
 editor_only = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 140.0
 offset_top = 110.0
 offset_right = 1140.0
