@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://2yngd8rda1xv"]
+[gd_scene load_steps=4 format=3 uid="uid://2yngd8rda1xv"]
 
 [ext_resource type="PackedScene" uid="uid://ccnn0y04y4j0c" path="res://scenes/ui/title_card.tscn" id="2_0n22y"]
+[ext_resource type="Texture2D" uid="uid://tpxoqr0ivecq" path="res://assets/visual/photoshop/person.png" id="2_6kkck"]
+[ext_resource type="Texture2D" uid="uid://c455tou2wng2n" path="res://assets/visual/photoshop/pet.png" id="3_mr1mw"]
 
 [node name="TitleScreen" type="Node2D"]
 
@@ -10,3 +12,11 @@ offset_bottom = 720.0
 mouse_filter = 2
 
 [node name="TitleCard" parent="." instance=ExtResource("2_0n22y")]
+
+[node name="Human" type="Sprite2D" parent="."]
+position = Vector2(164, 365)
+texture = ExtResource("2_6kkck")
+
+[node name="Pet" type="Sprite2D" parent="."]
+position = Vector2(1113, 364)
+texture = ExtResource("3_mr1mw")
