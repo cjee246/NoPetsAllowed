@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxgoxuadiaobw"]
 
-[ext_resource type="Script" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
+[ext_resource type="Script" uid="uid://lm7jq8sub128" path="res://scenes/ui/level_end.gd" id="1_mhwnh"]
 
 [node name="LevelEnd" type="Control"]
 z_index = 1
@@ -94,10 +94,11 @@ text = "0"
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 120
 
 [node name="NextButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 disabled = true
 text = "Next Level"
 

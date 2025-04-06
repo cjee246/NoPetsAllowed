@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cx4cww6s8ebwt"]
 
-[ext_resource type="Script" path="res://scenes/ui/tutorial.gd" id="1_rga4x"]
+[ext_resource type="Script" uid="uid://bufxsbos0pxex" path="res://scenes/ui/tutorial.gd" id="1_rga4x"]
 
 [node name="Tutorial" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
@@ -21,10 +22,9 @@ layout_mode = 2
 alignment = 2
 
 [node name="HumansLabel" type="Label" parent="TutorialHumans/VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Humans are allowed."
+text = "Humans are allowed. Do not close the door."
 
 [node name="HSeparator" type="HSeparator" parent="TutorialHumans/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -42,7 +42,6 @@ layout_mode = 2
 alignment = 2
 
 [node name="PetsLabel" type="Label" parent="TutorialPets/VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "NO PETS ALLOWED! Click to close the door."

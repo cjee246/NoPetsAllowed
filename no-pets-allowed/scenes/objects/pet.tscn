@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://nlg5bgtq6brj"]
 
 [ext_resource type="Texture2D" uid="uid://cqqbfk17a8aem" path="res://assets/visual/temp/stickdog.png" id="1_af48n"]
-[ext_resource type="Script" path="res://scenes/objects/object.gd" id="1_dxfui"]
+[ext_resource type="Script" uid="uid://bimjbknq338su" path="res://scenes/objects/object.gd" id="1_dxfui"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38dsw"]
 animations = [{

@@ -14,9 +14,9 @@ const DOORS_MIN = 1
 const DOORS_MAX = 10
 const LEVEL_TIME_BASE = 10
 const LEVEL_TIME_INC = 2
-const LEVEL_TIME_MAX = 40
-const DOOR_TIME_BASE = 2.5
-const DOOR_TIME_DEC = 0.3
+const LEVEL_TIME_MAX = 30
+const DOOR_TIME_BASE = 2.8
+const DOOR_TIME_DEC = 0.2
 const DOORS_NEW_FLOOR = 4
 
 # score variables

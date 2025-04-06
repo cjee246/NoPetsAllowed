@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccnn0y04y4j0c"]
 
-[ext_resource type="Script" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
+[ext_resource type="Script" uid="uid://pcj4xusnse8e" path="res://scenes/ui/title_card.gd" id="1_vstvh"]
 
 [node name="TitleCard" type="Control"]
 layout_mode = 3
@@ -37,6 +37,7 @@ border_width = 13.0
 editor_only = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 140.0
 offset_top = 110.0
 offset_right = 1140.0
@@ -62,7 +63,7 @@ horizontal_alignment = 1
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 70
+theme_override_constants/separation = 60
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -88,10 +89,11 @@ uri = "https://cjee246.itch.io/"
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 60
 
 [node name="TutorialButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Tutorial"
 
 [node name="HSeparator4" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
@@ -101,6 +103,7 @@ theme_override_constants/separation = 10
 
 [node name="SkipButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Skip to Level 5"
 
 [node name="HSeparator5" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
@@ -110,6 +113,7 @@ theme_override_constants/separation = 10
 
 [node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "Exit Game"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
