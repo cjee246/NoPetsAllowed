@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://col2qk65kvd3x"]
+[gd_scene load_steps=2 format=3 uid="uid://col2qk65kvd3x"]
 
-[ext_resource type="Script" uid="uid://x8wprxrsm7s1" path="res://scenes/main/global_music.gd" id="1_a6qro"]
 [ext_resource type="AudioStream" uid="uid://c7qgwkj3rw3cc" path="res://assets/audio/music/NPA_Main.mp3" id="2_4c2kt"]
 
 [node name="GlobalMusic" type="Node"]
-script = ExtResource("1_a6qro")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4c2kt")
