@@ -11,4 +11,5 @@ stream = ExtResource("2_4c2kt")
 volume_db = -14.77
 autoplay = true
 bus = &"Music"
+playback_type = 1
 parameters/looping = true
